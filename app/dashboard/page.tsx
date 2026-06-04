@@ -29,7 +29,11 @@ export default async function DashboardPage() {
 
   const checkpoints = (checkpointsResult.data ?? []) as SyncCheckpoint[];
   const hasRealData = metrics.some((m) => m.value !== null);
-  const displayName = profile?.display_name ?? profile?.email ?? user.email ?? "Atleta";
+  const displayName =
+  (profile as { display_name?: string | null; email?: string | null } | null)?.display_name ??
+  (profile as { display_name?: string | null; email?: string | null } | null)?.email ??
+  user.email ??
+  "Atleta";
 
   const hour = new Date().getHours();
   const greeting =

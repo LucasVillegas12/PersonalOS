@@ -45,10 +45,18 @@ export async function getMetricSeries(
   if (error || !data || data.length === 0) return [];
 
   // Agrupar por día — si hay múltiples valores por día, tomar el último
-  const byDay = new Map<string, number>();
-  for (const row of data) {
-    const day = row.recorded_at.split("T")[0];
-    byDay.set(day, row.value); // los datos vienen asc, el último pisará los anteriores
+  type MetricRow = {
+  recorded_at: string;
+  value: number;
+};
+
+const rows = (data ?? []) as MetricRow[];
+
+const byDay = new Map<string, number>();
+for (const row of rows) {
+  const day = row.recorded_at.split("T")[0];
+  byDay.set(day, row.value);
+ // los datos vienen asc, el último pisará los anteriores
   }
 
   return Array.from(byDay.entries()).map(([date, value]) => ({ date, value }));
