@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Next.js
+.next/
+out/
+build/
+
+# Environment
+.env.local
+.env.*.local
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Capacitor / iOS
+ios/App/Pods/
+ios/.DS_Store
+*.xcworkspace/xcuserdata/
+DerivedData/
+
+# Supabase generated types (se regeneran con npm run supabase:types)
+# Comentar esta línea si se quiere commitear los types generados
+# types/supabase.ts
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
